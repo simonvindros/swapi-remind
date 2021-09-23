@@ -1,13 +1,16 @@
 import React from 'react'
 
-export default function Characters({ data }) {
+import { CharacterCard, CharacterImage } from './Characters.style'
+
+export default function Characters({ data, image }) {
     return (
         <>
             {data.map((characters, i) => {
                 return (
-                    <div key={i}>
-                        <strong>{characters.name}</strong>
-                    </div>
+                    <CharacterCard key={i}>
+                        <CharacterImage src={image[i].image} />
+                        {/* <strong>{characters.name}</strong> */}
+                    </CharacterCard>
                 )
             })}
         </>
