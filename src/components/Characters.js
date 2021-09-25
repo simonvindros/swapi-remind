@@ -2,15 +2,21 @@ import React from 'react'
 
 import { CharacterCard, CharacterImage } from './Characters.style'
 
-export default function Characters({ data, image }) {
+export default function Characters({ characters, lastCharacterRef }) {
     return (
         <>
-            {data.map((characters, i) => {
+            {characters.map((character, i) => {
+                if (characters.length === i + 1) {
+                    return (
+                        <div ref={lastCharacterRef} key={character.name}>
+                            <strong>{character.name}</strong>
+                        </div>
+                    )
+                }
                 return (
-                    <CharacterCard key={i}>
-                        <CharacterImage src={image[i].image} />
-                        {/* <strong>{characters.name}</strong> */}
-                    </CharacterCard>
+                    <div key={character.name}>
+                        <strong>{character.name}</strong>
+                    </div>
                 )
             })}
         </>

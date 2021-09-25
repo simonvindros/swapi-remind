@@ -55,8 +55,8 @@ function App() {
 
   return (
     <AppContainer>
-      {/* <Characters data={characters} image={characterImage} /> */}
-      {characters.map((character, i) => {
+      <Characters characters={characters} lastCharacterRef={lastCharacterRef} />
+      {/* {characters.map((character, i) => {
         if (characters.length === i + 1) {
           return (
             <div ref={lastCharacterRef} key={character.name}>
@@ -69,7 +69,7 @@ function App() {
             <strong>{character.name}</strong>
           </div>
         )
-      })}
+      })} */}
       <div>{loading && 'Loading...'}</div>
       <div>Hello</div>
     </AppContainer>
