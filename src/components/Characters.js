@@ -1,22 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { CharacterCard, CharacterImage } from './Characters.style'
+import {
+    CharacterCard,
+    CharacterName,
+    CharacterBirth,
+    CharacterGender,
+    CharacterHeight,
+    CharacterWeight
+} from './Characters.style'
 
 export default function Characters({ characters, lastCharacterRef }) {
+
+    const [clickedName, setClickedName] = useState('')
+
+    const handleClick = (character) => {
+        if (clickedName === '') {
+            console.log('clicked', character.name)
+            setClickedName(character.name)
+        } else {
+            setClickedName('')
+            console.log('clicked NO NAME')
+        }
+    }
+
     return (
         <>
             {characters.map((character, i) => {
                 if (characters.length === i + 1) {
                     return (
-                        <div ref={lastCharacterRef} key={character.name}>
-                            <strong>{character.name}</strong>
-                        </div>
+                        <CharacterCard ref={lastCharacterRef}
+                            key={character.name}
+                            onClick={() => handleClick(character)} >
+                            <CharacterName>[ {character.name} ]</CharacterName>
+                            {clickedName === character.name && <CharacterBirth> Birth year: {character.birth_year}</CharacterBirth>}
+                            {clickedName === character.name && <CharacterGender>Gender: {character.gender}</CharacterGender>}
+                            {clickedName === character.name && <CharacterHeight>Height (cm): {character.height}</CharacterHeight>}
+                            {clickedName === character.name && <CharacterWeight>Weight (kg): {character.mass}</CharacterWeight>}
+                        </CharacterCard>
                     )
                 }
                 return (
-                    <div key={character.name}>
-                        <strong>{character.name}</strong>
-                    </div>
+                    <CharacterCard key={character.name}
+                        onClick={() => handleClick(character)}>
+                        <CharacterName>[ {character.name} ]</CharacterName>
+                        {clickedName === character.name && <CharacterBirth>Birth year: {character.birth_year}</CharacterBirth>}
+                        {clickedName === character.name && <CharacterGender>Gender: {character.gender}</CharacterGender>}
+                        {clickedName === character.name && <CharacterHeight>Height (cm): {character.height}</CharacterHeight>}
+                        {clickedName === character.name && <CharacterWeight>Weight (kg): {character.mass}</CharacterWeight>}
+                    </CharacterCard>
                 )
             })}
         </>
