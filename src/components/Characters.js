@@ -15,11 +15,9 @@ export default function Characters({ characters, lastCharacterRef }) {
 
     const handleClick = (character) => {
         if (clickedName === '') {
-            console.log('clicked', character.name)
             setClickedName(character.name)
         } else {
             setClickedName('')
-            console.log('clicked NO NAME')
         }
     }
 
@@ -30,6 +28,7 @@ export default function Characters({ characters, lastCharacterRef }) {
                     return (
                         <CharacterCard ref={lastCharacterRef}
                             key={character.name}
+                            id={character.name}
                             onClick={() => handleClick(character)} >
                             <CharacterName>[ {character.name} ]</CharacterName>
                             {clickedName === character.name && <CharacterBirth> Birth year: {character.birth_year}</CharacterBirth>}
@@ -41,6 +40,7 @@ export default function Characters({ characters, lastCharacterRef }) {
                 }
                 return (
                     <CharacterCard key={character.name}
+                        id={character.name}
                         onClick={() => handleClick(character)}>
                         <CharacterName>[ {character.name} ]</CharacterName>
                         {clickedName === character.name && <CharacterBirth>Birth year: {character.birth_year}</CharacterBirth>}

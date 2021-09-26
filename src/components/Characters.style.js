@@ -4,7 +4,7 @@ export const CharacterCard = styled.div`
     margin: 50px 50px 50px 50px;
     border-radius: 2px;
     min-height: 250px;
-    width: 180px;
+    width: 190px;
     flex-direction: column;
     align-items: center;
     display: flex;

@@ -4,7 +4,10 @@ import Characters from './components/Characters.js'
 import getCharacters from './components/getCharacters'
 
 import { CharacterContainer } from './components/CharacterContainer.style.js'
-import './App.css'
+import { AppContainer } from './components/AppContainer.style'
+import { LoadingIndicator } from './components/LoadingIndicator.style'
+
+import SearchBar from './components/SearchBar'
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1)
@@ -17,6 +20,7 @@ function App() {
     loading
   } = getCharacters(pageNumber)
 
+  //https://www.youtube.com/watch?v=NZKUirTtxcg
   const lastCharacterRef = useCallback(node => {
     if (loading) return
     if (observer.current) observer.current.disconnect()
@@ -29,10 +33,17 @@ function App() {
   }, [loading, hasNextPage])
 
   return (
-    <CharacterContainer>
-      <Characters characters={characters} lastCharacterRef={lastCharacterRef} />
-      {/* <div>{loading && 'Loading...'}</div> */}
-    </CharacterContainer>
+    <AppContainer>
+
+      {!loading && <SearchBar />}
+
+      <CharacterContainer>
+        <Characters characters={characters} lastCharacterRef={lastCharacterRef} />
+      </CharacterContainer>
+
+      {loading && <LoadingIndicator>LOADING...</LoadingIndicator>}
+
+    </AppContainer>
   );
 }
 
