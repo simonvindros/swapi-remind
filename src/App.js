@@ -33,7 +33,7 @@ function App() {
       }
     })
     if (node) observer.current.observe(node)
-  }, [loading, hasNextPage, pageNumber, searchInput])
+  }, [loading, hasNextPage, pageNumber])
 
   return (
     <AppContainer>
