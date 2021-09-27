@@ -9,7 +9,7 @@ import {
     CharacterWeight
 } from './Characters.style'
 
-export default function Characters({ characters, lastCharacterRef }) {
+export default function Characters({ characters, lastCharacterRef, searchInput }) {
 
     const [clickedName, setClickedName] = useState('')
 

@@ -6,5 +6,6 @@ export const CharacterContainer = styled.div`
     align-items: center;
     max-width: 1024px;
     flex-wrap: wrap;
+    min-height: 90vh;
 `
 

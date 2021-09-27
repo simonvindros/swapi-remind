@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { StyledSearch } from './SearchBar.style'
 
-export default function SearchBar() {
+export default function SearchBar({ setSearchInput, searchInput, setPageNumber, setCharacters }) {
 
-    const [searchTerm, setSearchTerm] = useState('')
+    const searchItems = (searchValue) => {
+        setSearchInput(searchValue)
+        setPageNumber(1)
+        setCharacters([])
+    }
 
     return (
-        <StyledSearch id="searchBar"
+        < StyledSearch id="searchBar"
             type="text"
             placeholder="Search..."
-            onChange={event => { setSearchTerm(event.target.value) }}
+            value={searchInput}
+            onChange={(e) => {
+                searchItems(e.target.value)
+            }
+            }
         />
     )
 }
