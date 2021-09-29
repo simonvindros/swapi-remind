@@ -12,6 +12,10 @@ export const CharacterCard = styled.div`
     box-shadow: 0px 0px 18px 10px #8f8f8f;
     background-image: radial-gradient(circle at center, rgba(143, 143, 143, 0.1), 
                                                         rgba(143, 143, 143, 0.6));
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 22px 12px #8f8f8f;
+    }
 `
 
 export const CharacterName = styled.div`
